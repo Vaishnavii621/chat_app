@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
-const Register = () => {
+export const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -25,47 +25,52 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white p-8 rounded-md shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+    <div className="background">
+      <form onSubmit={handleSubmit} className="form-card" autoComplete="off">
+        <div className="form-title">Welcome</div>
+
+        <div className="form-subtitle">Register</div>
+
+        <div className="auth">
+          <div className="input-elm">
+            <div className="auth-label">Username</div>
             <input
+              className="auth-input"
               type="text"
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
-          <div className="mb-4">
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
+
+          <div className="input-elm">
+            <div className="auth-label">Password</div>
+            <div className="input-container">
+              <input
+                className="auth-input"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
           </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200"
-          >
+
+          <button className="auth-button" type="submit">
             Register
           </button>
-        </form>
+        </div>
+        
         {error && (
-          <p className="text-red-500 text-center mt-4">{error}</p>
+          <p className="text-center mt-4" style={{ color: "red" }}>
+            {error}
+          </p>
         )}
-        <p className="text-center mt-4">
-          Already have an account?{" "}
-          <Link to="/login" className="text-blue-500 hover:underline">
-            Login here
-          </Link>
+
+        <p>
+          Already have an account? <Link to="/">Login here</Link>
         </p>
-      </div>
+      </form>
     </div>
   );
 };
-
-export default Register;

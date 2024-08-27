@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import axios from "../axios/axios";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 
 export const AuthPage = () => {
   const navigate = useNavigate();
@@ -44,9 +44,9 @@ export const AuthPage = () => {
   return (
     <div className="background">
       <form onSubmit={onSubmit} className="form-card" autoComplete="off">
-        <div className="form-title">Welcome 👋</div>
+        <div className="form-title">Heyy</div>
 
-        <div className="form-subtitle">Log in to get started</div>
+        <div className="form-subtitle">Log in</div>
 
         <div className="auth">
           <div
@@ -103,6 +103,7 @@ export const AuthPage = () => {
             Enter
           </button>
         </div>
+        <p>Don't have an account? <Link to="/register">Register here</Link></p>
       </form>
     </div>
   );
